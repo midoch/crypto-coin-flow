@@ -1,11 +1,28 @@
-import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from "react";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorBoundary />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+    errorElement: <ErrorBoundary />,
+  },
+]);
+
+const App = () => {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
-}
+};
 
 export default App;
