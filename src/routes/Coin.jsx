@@ -1,6 +1,4 @@
-// Coin.jsx
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
@@ -32,121 +30,149 @@ const Coin = () => {
     <>
       <Navbar />
       <div className="container mx-auto text-white p-4">
-        <div className="text-center mt-5 mb-10">
-          <h1 className="text-4xl font-bold text-white mb-4">{coin.name}</h1>
+        <div className="text-center mt-5 mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">{coin.name}</h1>
+          <p className="text-xl text-gray-300">Ticker: {coin.symbol}</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="col">
-            <h4 className="text-lg font-bold">Rank #{coin.market_cap_rank}</h4>
-            {coin.image ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <div className="bg-gray-900 p-4 rounded-md shadow-md">
+            <h4 className="text-lg font-bold mb-2">
+              Rank #{coin.market_cap_rank}
+            </h4>
+            {coin.image && (
               <img
                 src={coin.image.small}
                 alt={coin.name}
-                className="rounded-md mb-4"
+                className="rounded-md mb-2"
               />
-            ) : null}
-            <p>Name: {coin.name}</p>
-            <p>Ticker: {coin.symbol}</p>
+            )}
+            <p className="text-gray-200">Name: {coin.name}</p>
           </div>
 
-          <div className="col">
-            <h4 className="text-lg font-bold">Price</h4>
-            {coin.market_data ? (
-              <p className="text-green-500">
+          <div className="bg-gray-900 p-4 rounded-md shadow-md">
+            <h4 className="text-lg font-bold mb-2">Price</h4>
+            {coin.market_data && (
+              <p className="text-2xl font-semibold text-green-500 mb-2">
                 ${coin.market_data?.current_price?.usd.toLocaleString()}
               </p>
-            ) : null}
+            )}
+            <p className="text-gray-200">
+              Last updated:{" "}
+              {coin.last_updated && coin.last_updated.slice(0, 10)}
+            </p>
           </div>
         </div>
 
-        <div>
-          <h4 className="text-lg font-bold mt-8">Price Change (%)</h4>
-          <table className="w-full text-left">
-            <thead>
-              <tr>
-                <th>1h</th>
-                <th>24h</th>
-                <th>7d</th>
-                <th>14d</th>
-                <th>30d</th>
-                <th>1yr</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  {coin.market_data?.price_change_percentage_1h_in_currency
-                    ?.usd ? (
-                    <p>
-                      {
-                        coin.market_data?.price_change_percentage_1h_in_currency
-                          ?.usd
-                      }
-                    </p>
-                  ) : null}
-                </td>
-                <td>
-                  {coin.market_data?.price_change_percentage_24h_in_currency
-                    ?.usd ? (
-                    <p>
-                      {
-                        coin.market_data
-                          ?.price_change_percentage_24h_in_currency?.usd
-                      }
-                    </p>
-                  ) : null}
-                </td>
-                <td>
-                  {coin.market_data?.price_change_percentage_7d_in_currency
-                    ?.usd ? (
-                    <p>
-                      {
-                        coin.market_data?.price_change_percentage_7d_in_currency
-                          ?.usd
-                      }
-                    </p>
-                  ) : null}
-                </td>
-                <td>
-                  {coin.market_data?.price_change_percentage_14d_in_currency
-                    ?.usd ? (
-                    <p>
-                      {
-                        coin.market_data
-                          ?.price_change_percentage_14d_in_currency?.usd
-                      }
-                    </p>
-                  ) : null}
-                </td>
-                <td>
-                  {coin.market_data?.price_change_percentage_30d_in_currency
-                    ?.usd ? (
-                    <p>
-                      {
-                        coin.market_data
-                          ?.price_change_percentage_30d_in_currency?.usd
-                      }
-                    </p>
-                  ) : null}
-                </td>
-                <td>
-                  {coin.market_data?.price_change_percentage_1y_in_currency
-                    ?.usd ? (
-                    <p>
-                      {
-                        coin.market_data?.price_change_percentage_1y_in_currency
-                          ?.usd
-                      }
-                    </p>
-                  ) : null}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="mb-4">
+          <h4 className="text-xl font-bold text-white mt-8 mb-4">
+            Price Change (%)
+          </h4>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-500 shadow overflow-hidden border-b border-gray-800 sm:rounded-lg">
+              <thead className="bg-gray-900 text-white">
+                <tr>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wider">
+                    1h
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wider">
+                    24h
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wider">
+                    7d
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wider">
+                    14d
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wider">
+                    30d
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wider">
+                    1yr
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-gray-900 divide-y divide-gray-300">
+                <tr className="text-gray-800">
+                  <td className="px-4 py-4">
+                    {coin.market_data?.price_change_percentage_1h_in_currency
+                      ?.usd ? (
+                      <p className="text-green-500">
+                        {
+                          coin.market_data
+                            ?.price_change_percentage_1h_in_currency?.usd
+                        }
+                        %
+                      </p>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-4">
+                    {coin.market_data?.price_change_percentage_24h_in_currency
+                      ?.usd ? (
+                      <p className="text-green-500">
+                        {
+                          coin.market_data
+                            ?.price_change_percentage_24h_in_currency?.usd
+                        }
+                        %
+                      </p>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-4">
+                    {coin.market_data?.price_change_percentage_7d_in_currency
+                      ?.usd ? (
+                      <p className="text-green-500">
+                        {
+                          coin.market_data
+                            ?.price_change_percentage_7d_in_currency?.usd
+                        }
+                        %
+                      </p>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-4">
+                    {coin.market_data?.price_change_percentage_14d_in_currency
+                      ?.usd ? (
+                      <p className="text-green-500">
+                        {
+                          coin.market_data
+                            ?.price_change_percentage_14d_in_currency?.usd
+                        }
+                        %
+                      </p>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-4">
+                    {coin.market_data?.price_change_percentage_30d_in_currency
+                      ?.usd ? (
+                      <p className="text-green-500">
+                        {
+                          coin.market_data
+                            ?.price_change_percentage_30d_in_currency?.usd
+                        }
+                        %
+                      </p>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-4">
+                    {coin.market_data?.price_change_percentage_1y_in_currency
+                      ?.usd ? (
+                      <p className="text-green-500">
+                        {
+                          coin.market_data
+                            ?.price_change_percentage_1y_in_currency?.usd
+                        }
+                        %
+                      </p>
+                    ) : null}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
             <h4 className="text-lg font-bold">24 Hour Low</h4>
             {coin.market_data?.low_24h ? (
@@ -161,7 +187,7 @@ const Coin = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
             <h4 className="text-lg font-bold">Market Cap</h4>
             {coin.market_data?.market_cap?.usd ? (
