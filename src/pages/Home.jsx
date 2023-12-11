@@ -29,20 +29,23 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-start text-white">
+      <div className="min-h-screen flex flex-col items-center justify-start text-white">
         <div className="text-center mt-10">
-          <h1 className="text-5xl font-bold text-teal-500 mb-4">
-            Discover Crypto Coin Flows
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Track Your Crypto Coin
           </h1>
           <p className="text-gray-300 text-lg mb-8">
-            Dive into the realm of cryptocurrencies and keep pace with real-time
-            market data.
+            Cryptocurrencies with real-time market data.
           </p>
         </div>
         {loading ? (
-          <p className="text-gray-300 text-xl">Loading...</p>
+          <div className="text-center">
+            <p className="text-gray-500 text-xl">Loading...</p>
+          </div>
         ) : error ? (
-          <p className="text-red-500 text-xl">Error: {error}</p>
+          <div className="bg-pink-700 p-4 rounded-md shadow-md text-white text-center">
+            <p className="text-xl">Error: {error}</p>
+          </div>
         ) : (
           <Coins coins={coins} />
         )}

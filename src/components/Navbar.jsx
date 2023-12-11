@@ -3,14 +3,22 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-900 p-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-center">
+    <nav className="bg-gradient-to-r from-teal-500 to-teal-700 p-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link
           to="/"
-          className="text-teal-700 text-3xl font-bold transition duration-300 hover:text-teal-300 hover:underline"
+          className="text-white text-2xl font-bold transition duration-300 hover:underline"
         >
           Crypto Coin Flow
         </Link>
+        <div className="flex space-x-4">
+          <Link
+            to="/"
+            className="text-white transition duration-300 hover:underline"
+          >
+            Home
+          </Link>
+        </div>
       </div>
     </nav>
   );

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Coins = (props) => {
   return (
-    <div className="container mx-auto px-4 py-8 bg-gray-900 text-white">
+    <div className="container mx-auto px-4 py-8 bg-teal-900 rounded-3xl text-white">
       <div className="grid grid-cols-6 gap-4 font-bold mb-4 pl-4">
         <div className="col">#</div>
         <div className="col">Coin</div>
@@ -21,7 +21,7 @@ const Coins = (props) => {
           key={coins.id}
           className="cursor-pointer"
         >
-          <div className="grid grid-cols-6 gap-4 bg-gray-800 p-4 rounded-md shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 items-center mb-4">
+          <div className="grid grid-cols-6 gap-4 bg-teal-800 p-4 rounded-md shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 items-center mb-4">
             <div className="col">{coins.market_cap_rank}</div>
             <div className="col flex items-center space-x-2">
               <img
