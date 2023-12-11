@@ -2,8 +2,8 @@ import React from "react";
 
 const NotFoundPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="text-white p-8 rounded-lg shadow-md bg-gray-800">
+    <div className="min-h-screen flex items-center p-6 justify-center bg-teal-600">
+      <div className="text-white text-center p-8 rounded-lg shadow-md bg-teal-900">
         <h1 className="text-4xl font-bold text-red-500 mb-4">Oops! 🚧</h1>
         <p className="text-lg text-gray-300 mb-4">
           It seems like you wandered into uncharted territory.
