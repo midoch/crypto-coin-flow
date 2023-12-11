@@ -31,9 +31,9 @@ const Coin = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto text-white">
-        <div className="text-center mt-10">
-          <h1 className="text-4xl font-bold text-blue-500 mb-4">{coin.name}</h1>
+      <div className="container mx-auto text-white p-4">
+        <div className="text-center mt-5 mb-10">
+          <h1 className="text-4xl font-bold text-white mb-4">{coin.name}</h1>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -46,15 +46,15 @@ const Coin = () => {
                 className="rounded-md mb-4"
               />
             ) : null}
-            <p>{coin.name}</p>
-            <p>{coin.symbol}</p>
+            <p>Name: {coin.name}</p>
+            <p>Ticker: {coin.symbol}</p>
           </div>
 
           <div className="col">
             <h4 className="text-lg font-bold">Price</h4>
             {coin.market_data ? (
               <p className="text-green-500">
-                ${coin.market_data?.current_price?.usd}
+                ${coin.market_data?.current_price?.usd.toLocaleString()}
               </p>
             ) : null}
           </div>
@@ -149,14 +149,14 @@ const Coin = () => {
         <div className="grid grid-cols-2 gap-4 mt-8">
           <div>
             <h4 className="text-lg font-bold">24 Hour Low</h4>
-            {coin.market_data_low_24h_usd ? (
-              <p>${coin.market_data_low_24h_usd}</p>
+            {coin.market_data?.low_24h ? (
+              <p>${coin.market_data.low_24h.usd.toLocaleString()}</p>
             ) : null}
           </div>
           <div>
             <h4 className="text-lg font-bold">24 Hour High</h4>
-            {coin.market_data_high_24h_usd ? (
-              <p>${coin.market_data_high_24h_usd}</p>
+            {coin.market_data?.high_24h ? (
+              <p>${coin.market_data?.high_24h.usd.toLocaleString()}</p>
             ) : null}
           </div>
         </div>
@@ -165,13 +165,13 @@ const Coin = () => {
           <div>
             <h4 className="text-lg font-bold">Market Cap</h4>
             {coin.market_data?.market_cap?.usd ? (
-              <p>${coin.market_data?.market_cap?.usd}</p>
+              <p>${coin.market_data?.market_cap?.usd.toLocaleString()}</p>
             ) : null}
           </div>
           <div>
             <h4 className="text-lg font-bold">Circulating Supply</h4>
             {coin.market_data?.circulating_supply ? (
-              <p>{coin.market_data?.circulating_supply}</p>
+              <p>{coin.market_data?.circulating_supply.toLocaleString()}</p>
             ) : null}
           </div>
         </div>
