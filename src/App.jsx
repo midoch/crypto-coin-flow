@@ -1,26 +1,21 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import React from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import ErrorBoundary from "./components/ErrorBoundary";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    errorElement: <ErrorBoundary />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-    errorElement: <ErrorBoundary />,
-  },
-]);
+import NotFoundPage from "./pages/NotFoundPage";
+import Coin from "./routes/Coin";
 
 const App = () => {
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/coin" element={<Coin />} />
+        <Route path="/coin/:coinId" element={<Coin />} />
+        <Route path="/about" element={<About />} />
+        {/* Catch-all route for handling undefined routes */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </React.StrictMode>
   );
 };
