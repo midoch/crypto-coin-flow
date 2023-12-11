@@ -1,6 +1,6 @@
 # Crypto Coin Flow
 
-Crypto Coin Flow is a Crypto Coin tracker built to enhance web development, React, and Tailwind CSS skills. The project utilizes Vite.js as a package manager, providing a modern development experience.
+Crypto Coin Flow is a Crypto Coin tracker built to enhance my web development, React, and Tailwind CSS skills. The project utilizes Vite.js as a package manager, providing a modern development experience.
 
 ## Table of Contents
 
@@ -8,8 +8,9 @@ Crypto Coin Flow is a Crypto Coin tracker built to enhance web development, Reac
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Live Demo](#live-demo)
+- [Made by Me](#made-by-me)
+
 
 ## Introduction
 
@@ -39,3 +40,11 @@ git clone https://github.com/midoch/crypto-coin-flow.git
 cd crypto-coin-flow
 npm install
 ```
+
+## Live Demo
+
+Check out the live demo of Crypto Coin Flow [here](https://crypto-coin-flow.vercel.app).
+
+## Made by Me
+
+This project was developed by [midoch]. Feel free to follow me on [GitHub](https://github.com/midoch).
