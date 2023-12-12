@@ -13,10 +13,10 @@ const Navbar = () => {
         </Link>
         <div className="flex space-x-4">
           <Link
-            to="/"
+            to="/about"
             className="text-white transition duration-300 hover:underline"
           >
-            Home
+            News
           </Link>
         </div>
       </div>
