@@ -6,24 +6,21 @@ const News = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = {
-    method: "GET",
-    url: "https://crypto-news16.p.rapidapi.com/news/cointelegraph",
-    headers: {
-      "X-RapidAPI-Key": "294df55e38mshbe81b278a530b6ep12af76jsn2c2a14ee6e5d",
-      "X-RapidAPI-Host": "crypto-news16.p.rapidapi.com",
-    },
-  };
-
   useEffect(() => {
-    const { method, url, headers } = API_URL;
-
     const fetchData = async () => {
+      const options = {
+        method: "GET",
+        url: "https://crypto-news16.p.rapidapi.com/news/top/5",
+        headers: {
+          "X-RapidAPI-Key":
+            "294df55e38mshbe81b278a530b6ep12af76jsn2c2a14ee6e5d",
+          "X-RapidAPI-Host": "crypto-news16.p.rapidapi.com",
+        },
+      };
+
       try {
-        setError(null);
-        const response = await axios.request({ method, url, headers });
-        const firstTenArticles = response.data.slice(0, 10);
-        setArticles(firstTenArticles);
+        const response = await axios.request(options);
+        setArticles(response.data);
       } catch (error) {
         setError("Failed to fetch news. Please try again later.");
         console.error("Error fetching news:", error);
@@ -33,7 +30,7 @@ const News = () => {
     };
 
     fetchData();
-  }, [API_URL]);
+  }, []);
 
   return (
     <div className="container mx-auto mt-8">
