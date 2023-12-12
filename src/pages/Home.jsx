@@ -40,7 +40,7 @@ const Home = () => {
         </div>
         {loading ? (
           <div className="text-center">
-            <p className="text-gray-500 text-xl">Loading...</p>
+            <p className="text-white text-xl">Loading...</p>
           </div>
         ) : error ? (
           <div className="bg-pink-700 p-4 rounded-md shadow-md text-white text-center">
