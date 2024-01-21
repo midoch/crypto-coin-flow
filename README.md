@@ -48,3 +48,10 @@ Check out the live demo of Crypto Coin Flow [here](https://crypto-coin-flow.verc
 ## Made by Me
 
 This project was developed by [midoch]. Feel free to follow me on [GitHub](https://github.com/midoch).
+
+## Preview
+
+![image](https://github.com/midoch/crypto-coin-flow/assets/101448145/5df265c9-939e-400a-b5cf-74c6299fb5a3)
+
+![image](https://github.com/midoch/crypto-coin-flow/assets/101448145/3fc7308c-d483-4f17-9ef6-c75ab69679ec)
+
